@@ -72,7 +72,7 @@ return [
     |
     */
 
-    'chat_box_widget_position' => (string) ChatBoxPosition::bottomRight(),
+    'chat_box_widget_position' => (string)ChatBoxPosition::bottomRight(),
 
     /*
     |--------------------------------------------------------------------------
@@ -89,6 +89,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Guard
+    |--------------------------------------------------------------------------
+    |
+    | Specify the guard for the Authorization. Please make sure it is the same as
+    | the sanctum guard.
+    |
+    */
+
+    'guard' => 'eventapp',// env('BASEMENT_AUTHORIZATION_GUARD'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Avatar
     |--------------------------------------------------------------------------
     |
@@ -101,7 +113,7 @@ return [
     */
 
     'avatar' => [
-        'style' => (string) AvatarStyle::micah(),
+        'style' => (string)AvatarStyle::micah(),
         'options' => [
             'b' => '%233584e4',
             'size' => 64,

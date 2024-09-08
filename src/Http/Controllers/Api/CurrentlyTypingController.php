@@ -19,9 +19,10 @@ class CurrentlyTypingController extends Controller
      */
     public function __invoke(
         Authenticatable $contact,
-    ): Response {
+    ): Response
+    {
         /** @var int $senderId */
-        $senderId = Auth::id();
+        $senderId = Auth::guard(config('basement.guard'))->id();
 
         broadcast(new CurrentlyTyping(
             senderId: $senderId,

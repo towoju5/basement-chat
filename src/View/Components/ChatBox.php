@@ -41,7 +41,7 @@ class ChatBox extends Component
      */
     protected function authenticateOrFail(): void
     {
-        if (Auth::check() === false) {
+        if (Auth::guard(config('basement.guard'))->check() === false) {
             throw new UnauthorizedException(
                 'Please register this package only on the page where the user has successfully logged in.',
             );

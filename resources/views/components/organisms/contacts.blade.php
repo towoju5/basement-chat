@@ -11,7 +11,8 @@
 >
     <x-basement::organisms.header class="bm-z-30">
         <x-slot:title>
-            <x-basement::atoms.icons.fas-comments class="bm-my-1 bm-inline bm-w-4" /> Messaging
+            <x-basement::atoms.icons.fas-comments class="bm-my-1 bm-inline bm-w-4"/>
+            Messaging
         </x-slot:title>
 
         <x-slot:buttons>
@@ -20,7 +21,7 @@
                 x-show="isNotificationAllowed === true && hasNotificationPermission === true"
                 x-on:click="isNotificationAllowed = false"
             >
-                <x-basement::atoms.icons.fas-bell class="bm-m-auto bm-h-[0.9rem]" />
+                <x-basement::atoms.icons.fas-bell class="bm-m-auto bm-h-[0.9rem]"/>
             </x-basement::atoms.buttons.header>
 
             <x-basement::atoms.buttons.header
@@ -28,7 +29,7 @@
                 x-show="hasNotificationPermission === false"
                 x-on:click="requestNotificationPermission"
             >
-                <x-basement::atoms.icons.fas-exclamation-triangle class="bm-m-auto bm-h-[0.9rem]" />
+                <x-basement::atoms.icons.fas-exclamation-triangle class="bm-m-auto bm-h-[0.9rem]"/>
             </x-basement::atoms.buttons.header>
 
             <x-basement::atoms.buttons.header
@@ -36,14 +37,14 @@
                 x-show="isNotificationAllowed === false && hasNotificationPermission === true"
                 x-on:click="isNotificationAllowed = true"
             >
-                <x-basement::atoms.icons.fas-bell-slash class="bm-m-auto bm-h-[0.9rem]" />
+                <x-basement::atoms.icons.fas-bell-slash class="bm-m-auto bm-h-[0.9rem]"/>
             </x-basement::atoms.buttons.header>
 
-            <x-basement::atoms.buttons.header-minimize x-on:click="isMinimized = true" />
+            <x-basement::atoms.buttons.header-minimize x-on:click="isMinimized = true"/>
         </x-slot:buttons>
     </x-basement::organisms.header>
 
-    <x-basement::organisms.offline-state x-show="online === false" />
+    <x-basement::organisms.offline-state x-show="online === false"/>
 
     <section
         class="bm-relative bm-flex bm-flex-grow bm-flex-col bm-overflow-auto bm-bg-white bm-px-3 bm-text-gray-900"
@@ -54,7 +55,7 @@
         <x-basement::molecules.form-group class="bm-relative bm-col-span-full bm-block bm-py-4">
             <x-slot:title>Search Contacts</x-slot:title>
             <x-slot:icon>
-                <x-basement::atoms.icons.fas-search class="bm-h-[0.9rem] bm-text-gray-400" />
+                <x-basement::atoms.icons.fas-search class="bm-h-[0.9rem] bm-text-gray-400"/>
             </x-slot:icon>
 
             <x-basement::atoms.input
@@ -97,7 +98,7 @@
                     <div class="bm-grid bm-grid-cols-4">
                         <h4 class="bm-col-span-3 bm-truncate bm-text-sm bm-font-bold bm-text-gray-900">
                             <span
-                                x-text="(contact.id === {{ \Illuminate\Support\Facades\Auth::id() }} ? '(You) ' : '') + contact.name"
+                                x-text="(contact.id === {{ \Illuminate\Support\Facades\Auth::guard(config('basement.guard'))->id() }} ? '(You) ' : '') + contact.name"
                                 x-bind:data-title="contact.name"
                             ></span>
                         </h4>

@@ -30,7 +30,7 @@ class UpdatePrivateMessagesRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Auth::check();
+        return Auth::guard(config('basement.guard'))->check();
     }
 
     /**
@@ -88,7 +88,7 @@ class UpdatePrivateMessagesRequest extends FormRequest
         $privateMessages = $this->markAsReadOperation;
 
         $privateMessages->each(static function (PrivateMessageData $data, int $key) use ($validator): void {
-            if ($data->receiver_id === Auth::id()) {
+            if ($data->receiver_id === Auth::guard(config('basement.guard'))->id()) {
                 return;
             }
 

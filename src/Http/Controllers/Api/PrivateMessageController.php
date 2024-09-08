@@ -27,13 +27,13 @@ class PrivateMessageController extends Controller
      * @param \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $contact
      */
     public function index(
-        Request $request,
-        Authenticatable $contact,
+        Request            $request,
+        Authenticatable    $contact,
         AllPrivateMessages $allPrivateMessages,
     ): JsonResponse
     {
         /** @var \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $user */
-        $user = Auth::user();
+        $user = Auth::guard(config('basement.guard'))->user();
 
         /** @var string $keyword */
         $keyword = $request->get('keyword') ?? '';
@@ -55,14 +55,14 @@ class PrivateMessageController extends Controller
     ): JsonResponse
     {
         /** @var int $senderId */
-        $senderId = Auth::id();
+        $senderId = Auth::guard(config('basement.guard'))->id();
 
         /** @var string $value */
         $value = $request->input('value');
 
         $message = $sendPrivateMessage->send(new PrivateMessageData(
-            receiver_id: (int) $contact->id,
-            sender_id: (int) $senderId,
+            receiver_id: (int)$contact->id,
+            sender_id: (int)$senderId,
             type: MessageType::text(),
             value: $value,
         ));
@@ -79,7 +79,7 @@ class PrivateMessageController extends Controller
     ): JsonResponse
     {
         /** @var \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $user */
-        $user = Auth::user();
+        $user = Auth::guard(config('basement.guard'))->user();
 
         $messages = $markPrivatesMessagesAsRead->markAsRead(
             readBy: $user,
