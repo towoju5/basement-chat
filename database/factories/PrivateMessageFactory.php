@@ -8,7 +8,7 @@ use BasementChat\Basement\Enums\MessageType;
 use BasementChat\Basement\Models\PrivateMessage;
 use BasementChat\Basement\Tests\Fixtures\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\BasementChat\Basement\Models\PrivateMessage>
@@ -47,8 +47,8 @@ class PrivateMessageFactory extends Factory
     /**
      * Indicate that the receiver and sender model's should be two given users.
      *
-     * @param \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $receiver
-     * @param \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $sender
+     * @param \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $receiver
+     * @param \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $sender
      */
     public function betweenTwoUsers(Authenticatable $receiver, Authenticatable $sender): self
     {
@@ -61,7 +61,7 @@ class PrivateMessageFactory extends Factory
     /**
      * Indicate that the receiver and sender model's should be same.
      *
-     * @param \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $user
+     * @param \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $user
      */
     public function sendToSelf(Authenticatable $user): self
     {

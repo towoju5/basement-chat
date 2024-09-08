@@ -9,7 +9,7 @@ use BasementChat\Basement\Data\PrivateMessageData;
 use BasementChat\Basement\Events\PrivateMessagesReceivedMarkedAsRead;
 use BasementChat\Basement\Events\PrivateMessagesSentMarkedAsRead;
 use BasementChat\Basement\Facades\Basement;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Collection;
 
 class MarkPrivatesMessagesAsRead implements MarkPrivatesMessagesAsReadContract
@@ -17,7 +17,7 @@ class MarkPrivatesMessagesAsRead implements MarkPrivatesMessagesAsReadContract
     /**
      * Mark given private messages as has been read.
      *
-     * @param \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $readBy
+     * @param \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $readBy
      * @param \Illuminate\Support\Collection<int,\BasementChat\Basement\Data\PrivateMessageData> $privateMessages
      *
      * @return \Illuminate\Support\Collection<int,\BasementChat\Basement\Data\PrivateMessageData>
@@ -46,7 +46,7 @@ class MarkPrivatesMessagesAsRead implements MarkPrivatesMessagesAsReadContract
      * Notify the sender that the receiver has read private messages. This method also notifies
      * the receiver, so multiple tabs opened by the receiver will synchronize unread messages.
      *
-     * @param \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $receiver
+     * @param \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $receiver
      * @param \Illuminate\Support\Collection<int,\BasementChat\Basement\Data\PrivateMessageData> $privateMessages
      */
     protected function notify(Authenticatable $receiver, Collection $privateMessages): void

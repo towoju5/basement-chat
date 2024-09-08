@@ -13,7 +13,8 @@ use BasementChat\Basement\Contracts\User as UserContract;
 use BasementChat\Basement\Enums\AvatarStyle;
 use BasementChat\Basement\Enums\ChatBoxPosition;
 use BasementChat\Basement\Models\PrivateMessage;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+
+use Illuminate\Contracts\Auth\Authenticatable;
 
 class Basement implements BasementContract
 {
@@ -38,9 +39,9 @@ class Basement implements BasementContract
     /**
      * Get the name of the user model used by the application.
      *
-     * @return class-string<\Illuminate\Foundation\Auth\User>&class-string<\BasementChat\Basement\Contracts\User>
+     * @return class-string<\Illuminate\Contracts\Auth\Authenticatable>&class-string<\BasementChat\Basement\Contracts\User>
      *
-     * @throws \TypeError if the given user model is not a subclass of \Illuminate\Foundation\Auth\User
+     * @throws \TypeError if the given user model does not implement \Illuminate\Contracts\Auth\Authenticatable
      *                    or does not implement the \BasementChat\Basement\Contracts\User.
      */
     public static function userModel(): string
@@ -52,8 +53,8 @@ class Basement implements BasementContract
             || is_subclass_of(static::$userModel, UserContract::class) === false
         ) {
             throw new \TypeError(
-                'The given configuration user_model should be a subclass of ' . Authenticatable::class .
-                ' class and implement the ' . UserContract::class . ' interface.',
+                'The given configuration user_model should impleement the ' . Authenticatable::class .
+                ' interface and implement the ' . UserContract::class . ' interface.',
             );
         }
 
@@ -63,7 +64,7 @@ class Basement implements BasementContract
     /**
      * Get a new instance of the user model.
      *
-     * @return \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User
+     * @return \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User
      */
     public static function newUserModel(): Authenticatable
     {

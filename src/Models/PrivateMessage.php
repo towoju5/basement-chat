@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 /**
  * @property int $id
@@ -89,9 +89,9 @@ class PrivateMessage extends Model
     /**
      * Scope a query to include only messages between two specific users.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder<PrivateMessage>  $query
-     * @param  \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $a
-     * @param  \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $b
+     * @param \Illuminate\Database\Eloquent\Builder<PrivateMessage> $query
+     * @param \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $a
+     * @param \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $b
      */
     public function scopeWhereBetweenTwoUsers(Builder $query, Authenticatable $a, Authenticatable $b): void
     {

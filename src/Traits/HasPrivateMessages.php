@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Query\Builder as QueryBuilder;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -83,8 +83,8 @@ trait HasPrivateMessages
     /**
      * Scope a query to append the latest private message id.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder<Authenticatable>|\Illuminate\Database\Query\Builder  $query
-     * @param  \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $user
+     * @param \Illuminate\Database\Eloquent\Builder<Authenticatable>|\Illuminate\Database\Query\Builder $query
+     * @param \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $user
      */
     public function scopeAddSelectLastPrivateMessageId(Builder|QueryBuilder $query, Authenticatable $user): void
     {
@@ -107,8 +107,8 @@ trait HasPrivateMessages
     /**
      * Scope a query to append the number of unread messages.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder<Authenticatable>|\Illuminate\Database\Query\Builder  $query
-     * @param  \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $user
+     * @param \Illuminate\Database\Eloquent\Builder<Authenticatable>|\Illuminate\Database\Query\Builder $query
+     * @param \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $user
      */
     public function scopeAddSelectUnreadMessages(Builder|QueryBuilder $query, Authenticatable $user): void
     {

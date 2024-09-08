@@ -8,7 +8,7 @@ use BasementChat\Basement\Contracts\AllContacts as AllContactsContract;
 use BasementChat\Basement\Data\ContactData;
 use BasementChat\Basement\Data\PrivateMessageData;
 use BasementChat\Basement\Facades\Basement;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Collection;
 
 class AllContacts implements AllContactsContract
@@ -16,7 +16,7 @@ class AllContacts implements AllContactsContract
     /**
      * Get all contact list.
      *
-     * @param \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $user
+     * @param \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $user
      *
      * @return \Illuminate\Support\Collection<int,\BasementChat\Basement\Data\ContactData>
      */
@@ -38,7 +38,7 @@ class AllContacts implements AllContactsContract
     }
 
     /**
-     * @param \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $contact
+     * @param \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $contact
      */
     protected function convertToContactData(Authenticatable $contact): ContactData
     {

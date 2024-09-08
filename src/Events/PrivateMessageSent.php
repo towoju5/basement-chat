@@ -30,7 +30,7 @@ class PrivateMessageSent implements ShouldBroadcastNow
         $this->senderId = $message->sender_id;
         $this->detail = $message->toArray();
 
-        /** @var \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $sender */
+        /** @var \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $sender */
         $sender = $message->sender;
 
         $this->detail['sender'] = $sender->only(['id', 'name', 'avatar']);

@@ -6,14 +6,14 @@ namespace BasementChat\Basement\Broadcasting;
 
 use BasementChat\Basement\Data\ContactData;
 use BasementChat\Basement\Facades\Basement;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 class ContactChannel
 {
     /**
      * Authenticate the user's access to the channel.
      *
-     * @param  \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $user
+     * @param \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $user
      *
      * @return array<string,mixed>|null
      */
@@ -23,7 +23,7 @@ class ContactChannel
             return null;
         }
 
-        /** @var \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $contact */
+        /** @var \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $contact */
         $contact = Basement::newUserModel()->findOrFail($user->id);
         $contact->append('avatar');
 

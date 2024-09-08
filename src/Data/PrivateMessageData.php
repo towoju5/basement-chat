@@ -8,7 +8,7 @@ use BasementChat\Basement\Enums\MessageType;
 use BasementChat\Basement\Facades\Basement;
 use BasementChat\Basement\Models\PrivateMessage;
 use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 

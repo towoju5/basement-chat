@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BasementChat\Basement\Contracts;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Collection;
 
 interface AllContacts
@@ -12,7 +12,7 @@ interface AllContacts
     /**
      * Get all contact list.
      *
-     * @param \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $user
+     * @param \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $user
      *
      * @return \Illuminate\Support\Collection<int,\BasementChat\Basement\Data\ContactData>
      */

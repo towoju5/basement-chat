@@ -7,7 +7,7 @@ namespace BasementChat\Basement\Contracts;
 use BasementChat\Basement\Enums\AvatarStyle;
 use BasementChat\Basement\Enums\ChatBoxPosition;
 use BasementChat\Basement\Models\PrivateMessage;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 interface Basement
 {
@@ -19,9 +19,9 @@ interface Basement
     /**
      * Get the name of the user model used by the application.
      *
-     * @return class-string<\Illuminate\Foundation\Auth\User>&class-string<\BasementChat\Basement\Contracts\User>
+     * @return class-string<\Illuminate\Contracts\Auth\Authenticatable>&class-string<\BasementChat\Basement\Contracts\User>
      *
-     * @throws \TypeError if the given user model is not a subclass of \Illuminate\Foundation\Auth\User
+     * @throws \TypeError if the given user model does not implement the Illuminate\Contracts\Auth\Authenticatable
      *                    or does not implement the \BasementChat\Basement\Contracts\User.
      */
     public static function userModel(): string;
@@ -29,7 +29,7 @@ interface Basement
     /**
      * Get a new instance of the user model.
      *
-     * @return \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User
+     * @return \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User
      */
     public static function newUserModel(): Authenticatable;
 

@@ -80,7 +80,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Specify the namespace and class used to get the user model instance. The
-    | given class must extend the "Illuminate\Foundation\Auth\User" and
+    | given class must implement the "Illuminate\Contracts\Auth\Authenticatable" and
     | implement the "BasementChat\Basement\Contracts\User".
     |
     */

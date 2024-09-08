@@ -7,7 +7,7 @@ namespace BasementChat\Basement\Actions;
 use BasementChat\Basement\Contracts\AllPrivateMessages as AllPrivateMessagesContract;
 use BasementChat\Basement\Facades\Basement;
 use Illuminate\Contracts\Pagination\CursorPaginator;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 class AllPrivateMessages implements AllPrivateMessagesContract
 {
@@ -19,8 +19,8 @@ class AllPrivateMessages implements AllPrivateMessagesContract
     /**
      * Get all private messages between to a given user list.
      *
-     * @param \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $receiver
-     * @param \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $sender
+     * @param \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $receiver
+     * @param \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $sender
      *
      * @return \Illuminate\Contracts\Pagination\CursorPaginator<\BasementChat\Basement\Models\PrivateMessage>
      */

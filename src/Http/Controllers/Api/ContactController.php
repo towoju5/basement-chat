@@ -17,7 +17,7 @@ class ContactController extends Controller
      */
     public function index(AllContacts $allContacts): JsonResponse
     {
-        /** @var \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $user */
+        /** @var \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $user */
         $user = Auth::user();
         $contacts = $allContacts->all($user);
 

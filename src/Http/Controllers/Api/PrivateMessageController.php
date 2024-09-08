@@ -11,7 +11,7 @@ use BasementChat\Basement\Data\PrivateMessageData;
 use BasementChat\Basement\Enums\MessageType;
 use BasementChat\Basement\Http\Requests\StorePrivateMessageRequest;
 use BasementChat\Basement\Http\Requests\UpdatePrivateMessagesRequest;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -24,14 +24,15 @@ class PrivateMessageController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User  $contact
+     * @param \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $contact
      */
     public function index(
         Request $request,
         Authenticatable $contact,
         AllPrivateMessages $allPrivateMessages,
-    ): JsonResponse {
-        /** @var \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $user */
+    ): JsonResponse
+    {
+        /** @var \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $user */
         $user = Auth::user();
 
         /** @var string $keyword */
@@ -45,13 +46,14 @@ class PrivateMessageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User  $contact
+     * @param \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $contact
      */
     public function store(
-        Authenticatable $contact,
+        Authenticatable            $contact,
         StorePrivateMessageRequest $request,
-        SendPrivateMessage $sendPrivateMessage
-    ): JsonResponse {
+        SendPrivateMessage         $sendPrivateMessage
+    ): JsonResponse
+    {
         /** @var int $senderId */
         $senderId = Auth::id();
 
@@ -73,9 +75,10 @@ class PrivateMessageController extends Controller
      */
     public function updates(
         UpdatePrivateMessagesRequest $request,
-        MarkPrivatesMessagesAsRead $markPrivatesMessagesAsRead,
-    ): JsonResponse {
-        /** @var \Illuminate\Foundation\Auth\User&\BasementChat\Basement\Contracts\User $user */
+        MarkPrivatesMessagesAsRead   $markPrivatesMessagesAsRead,
+    ): JsonResponse
+    {
+        /** @var \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $user */
         $user = Auth::user();
 
         $messages = $markPrivatesMessagesAsRead->markAsRead(
