@@ -34,7 +34,7 @@ class AllContacts implements AllContactsContract
         return $contacts
             ->sortByDesc('lastPrivateMessage.id')
             ->values()
-            ->map(fn (Authenticatable $contact): ContactData => $this->convertToContactData($contact));
+            ->map(fn(Authenticatable $contact): ContactData => $this->convertToContactData($contact));
     }
 
     /**
@@ -43,19 +43,20 @@ class AllContacts implements AllContactsContract
     protected function convertToContactData(Authenticatable $contact): ContactData
     {
         return new ContactData(
-            id: (int) $contact->id,
+            id: (int)$contact->id,
             name: $contact->name,
             avatar: $contact->avatar,
-            last_private_message: (static fn () => $contact->lastPrivateMessage !== null ? new PrivateMessageData(
-                receiver_id: (int) $contact->lastPrivateMessage->receiver_id,
-                sender_id: (int) $contact->lastPrivateMessage->sender_id,
+            avatarText: $contact->avatarText,
+            last_private_message: (static fn() => $contact->lastPrivateMessage !== null ? new PrivateMessageData(
+                receiver_id: (int)$contact->lastPrivateMessage->receiver_id,
+                sender_id: (int)$contact->lastPrivateMessage->sender_id,
                 type: $contact->lastPrivateMessage->type,
                 value: $contact->lastPrivateMessage->value,
-                id: (int) $contact->lastPrivateMessage->id,
+                id: (int)$contact->lastPrivateMessage->id,
                 created_at: $contact->lastPrivateMessage->created_at,
                 read_at: $contact->lastPrivateMessage->read_at,
             ) : null)(),
-            unread_messages: (int) $contact->unread_messages,
+            unread_messages: (int)$contact->unread_messages,
         );
     }
 }

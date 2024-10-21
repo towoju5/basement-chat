@@ -1,6 +1,6 @@
 import type ContactData from '../data/contact-data'
 import type PrivateMessageData from '../data/private-message-data'
-import type { PrivateMessage } from './api'
+import type {PrivateMessage} from './api'
 
 export interface PushNotificationEvent {
   title: string

@@ -8607,21 +8607,23 @@ class ContactData {
     id;
     name;
     avatar;
+    avatarText;
     unreadMessages;
     lastPrivateMessage;
     isOnline;
     typing;
-    constructor(id, name, avatar, unreadMessages, lastPrivateMessage, isOnline = false, typing = false) {
+    constructor(id, name, avatar, avatarText, unreadMessages, lastPrivateMessage, isOnline = false, typing = false) {
         this.id = id;
         this.name = name;
         this.avatar = avatar;
+        this.avatarText = avatarText;
         this.unreadMessages = unreadMessages;
         this.lastPrivateMessage = lastPrivateMessage;
         this.isOnline = isOnline;
         this.typing = typing;
     }
     static from(contact) {
-        return new this(contact.id, contact.name, contact.avatar, contact.unread_messages, contact.last_private_message !== null ? PrivateMessageData.from(contact.last_private_message) : null);
+        return new this(contact.id, contact.name, contact.avatar, contact.avatarText, contact.unread_messages, contact.last_private_message !== null ? PrivateMessageData.from(contact.last_private_message) : null);
     }
 }
 

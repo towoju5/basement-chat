@@ -1,8 +1,12 @@
-import type { AlpineComponent } from 'alpinejs'
+import type {AlpineComponent} from 'alpinejs'
 import ContactData from '../data/contact-data'
-import type { Response, Contact } from '../types/api'
-import type { ContactComponent } from '../types/components'
-import type { PrivateMessagesReceivedMarkedAsReadEvent, UpdateCurrentlyTypingContactEvent, UpdateLastPrivateMessageEvent } from '../types/events'
+import type {Response, Contact} from '../types/api'
+import type {ContactComponent} from '../types/components'
+import type {
+  PrivateMessagesReceivedMarkedAsReadEvent,
+  UpdateCurrentlyTypingContactEvent,
+  UpdateLastPrivateMessageEvent
+} from '../types/events'
 
 export default (): AlpineComponent<ContactComponent> => {
   const container: HTMLDivElement = document.querySelector('.basement-contacts')!
@@ -31,11 +35,12 @@ export default (): AlpineComponent<ContactComponent> => {
     async mount(): Promise<void> {
       const response = await window.axios
         .get<Response<Contact[]>>(this.url)
-        .then(({ data }) => data)
+        .then(({data}) => data)
 
       this.contacts = response
         .data
         .map((contact: Contact): ContactData => ContactData.from(contact))
+
 
       this.registerEchoEventListeners()
     },
@@ -50,7 +55,7 @@ export default (): AlpineComponent<ContactComponent> => {
 
       return this
         .contacts
-        .filter(({ name }: ContactData): boolean => (
+        .filter(({name}: ContactData): boolean => (
           name
             .toLowerCase()
             .includes(this.search.toLowerCase())
@@ -63,13 +68,13 @@ export default (): AlpineComponent<ContactComponent> => {
     findSameContact(searchId: number): { index: number | null, contact: ContactData | null } {
       const sameContactIndex: number = this
         .contacts
-        .findIndex(({ id }: ContactData): boolean => id === searchId)
+        .findIndex(({id}: ContactData): boolean => id === searchId)
 
       if (sameContactIndex === -1) {
-        return { index: null, contact: null }
+        return {index: null, contact: null}
       }
 
-      return { index: sameContactIndex, contact: this.contacts.at(sameContactIndex)! }
+      return {index: sameContactIndex, contact: this.contacts.at(sameContactIndex)!}
     },
 
     /**
@@ -185,7 +190,7 @@ export default (): AlpineComponent<ContactComponent> => {
      * HTML DOM event listener to update the unread messages count.
      */
     updateUnreadMessages(event: CustomEvent<PrivateMessagesReceivedMarkedAsReadEvent>): void {
-      event.detail.messages.forEach(({ sender_id, total }) => {
+      event.detail.messages.forEach(({sender_id, total}) => {
         const sameContact: ContactData | null = this.findSameContact(Number(sender_id)).contact
 
         if (sameContact === null) {
