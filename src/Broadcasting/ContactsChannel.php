@@ -24,9 +24,10 @@ class ContactsChannel
         $contact->append('avatar');
 
         return (new ContactData(
-            id: (int) $contact->id,
+            id: (int)$contact->id,
             name: $contact->name,
             avatar: $contact->avatar,
+            avatarText: $this->avatarText,
             last_private_message: null,
         ))->toArray();
     }

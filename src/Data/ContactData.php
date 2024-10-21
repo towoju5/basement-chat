@@ -36,7 +36,7 @@ class ContactData implements Arrayable
             'id' => $this->id,
             'name' => $this->name,
             'avatar' => $this->avatar,
-            'avatarText' => $this->avatarText,
+            'avatarText' => $this->avatarText ?? '',
             'last_private_message' => $this->last_private_message?->toArray(),
             'unread_messages' => $this->unread_messages,
         ];
