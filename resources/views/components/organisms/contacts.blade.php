@@ -9,6 +9,7 @@
     x-transition.scale.origin.left
     x-transition:enter.duration.500ms
 >
+
     <x-basement::organisms.header class="bm-z-30">
         <x-slot:title>
             <x-basement::atoms.icons.fas-comments class="bm-my-1 bm-inline bm-w-4"/>
@@ -82,11 +83,13 @@
                     x-bind:data-title="`${contact.name} is ${contact.isOnline === true ? 'online' : 'offline'}`"
                 >
 
-                    <img
-                        class="bm-rounded-full"
-                        x-bind:alt="contact.name"
-                        x-bind:src="contact.avatar"
-                    />
+                    {{--                    <img--}}
+                    {{--                        class="bm-rounded-full"--}}
+                    {{--                        x-bind:alt="contact.name"--}}
+                    {{--                        x-bind:src="contact.avatar"--}}
+                    {{--                    />--}}
+
+                    <x-basement::molecules.avatar x-bind:data-avatar="contact.avatarText" class="bm-rounded-full"/>
 
                     <span
                         class="basement-contacts__user-online-indicator bm-absolute bm-right-0 bm-top-0 bm-h-3 bm-w-3 bm-rounded-full"

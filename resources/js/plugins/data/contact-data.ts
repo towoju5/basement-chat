@@ -1,4 +1,4 @@
-import type { Contact } from '../types/api'
+import type {Contact} from '../types/api'
 import PrivateMessageData from './private-message-data'
 
 class ContactData {
@@ -6,6 +6,7 @@ class ContactData {
     public readonly id: number,
     public readonly name: string,
     public readonly avatar: string,
+    public readonly avatarText: string,
     public unreadMessages: number,
     public lastPrivateMessage: PrivateMessageData | null,
     public isOnline: boolean = false,
@@ -18,6 +19,7 @@ class ContactData {
       contact.id,
       contact.name,
       contact.avatar,
+      contact.avatarText,
       contact.unread_messages,
       contact.last_private_message !== null ? PrivateMessageData.from(
         contact.last_private_message,

@@ -15,12 +15,14 @@ class ContactData implements Arrayable
      * Create a new contact data instance.
      */
     public function __construct(
-        public int $id,
-        public string $name,
-        public string $avatar,
+        public int                 $id,
+        public string              $name,
+        public string              $avatar,
+        public string              $avatarText,
         public ?PrivateMessageData $last_private_message = null,
-        public int $unread_messages = 0,
-    ) {
+        public int                 $unread_messages = 0,
+    )
+    {
     }
 
     /**
@@ -34,6 +36,7 @@ class ContactData implements Arrayable
             'id' => $this->id,
             'name' => $this->name,
             'avatar' => $this->avatar,
+            'avatarText' => $this->avatarText,
             'last_private_message' => $this->last_private_message?->toArray(),
             'unread_messages' => $this->unread_messages,
         ];

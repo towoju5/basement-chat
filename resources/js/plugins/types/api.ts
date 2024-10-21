@@ -21,6 +21,7 @@ export interface Contact {
   id: number
   name: string
   avatar: string
+  avatarText: string
   last_private_message: PrivateMessage | null
   unread_messages: number
 }
