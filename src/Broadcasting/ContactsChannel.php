@@ -22,12 +22,13 @@ class ContactsChannel
         /** @var \Illuminate\Contracts\Auth\Authenticatable&\BasementChat\Basement\Contracts\User $contact */
         $contact = Basement::newUserModel()->findOrFail($user->id);
         $contact->append('avatar');
+        $contact->append('avatarText');
 
         return (new ContactData(
             id: (int)$contact->id,
             name: $contact->name,
             avatar: $contact->avatar,
-            avatarText: $this->avatarText,
+            avatarText: $contact->avatarText,
             last_private_message: null,
         ))->toArray();
     }
