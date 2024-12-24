@@ -21,24 +21,24 @@
   "require": {
     "php": "^8.0",
     "laravel/framework": ">=9.0.0",
-    "laravel/sanctum": "^2.14.0 | ^3.0.1",
-    "spatie/enum": "^3.13.0",
-    "spatie/laravel-package-tools": "^1.13.6"
+    "laravel/sanctum": "^3.0",
+    "spatie/enum": "^4.0",
+    "spatie/laravel-package-tools": "^2.0"
   },
   "require-dev": {
     "beyondcode/laravel-dump-server": "^1.8.0",
-    "laravel/pint": "^1.2.0",
-    "nunomaduro/collision": "^6.4.0",
-    "nunomaduro/larastan": "^2.2.5",
-    "nunomaduro/phpinsights": "^2.6.1",
-    "orchestra/canvas": "^7.5.0",
-    "orchestra/testbench": "^7.24.1",
-    "orchestra/testbench-dusk": "^7.25.1",
-    "phpstan/phpstan-deprecation-rules": "^1.0.0",
-    "phpstan/phpstan-phpunit": "^1.1.1",
-    "phpunit/phpunit": "^9.5.25",
-    "pusher/pusher-php-server": "^7.2.1",
-    "squizlabs/php_codesniffer": "^3.7.1"
+    "laravel/pint": "^1.9.0",
+    "nunomaduro/collision": "^7.0",
+    "nunomaduro/larastan": "^2.5",
+    "nunomaduro/phpinsights": "^2.7",
+    "orchestra/canvas": "^8.0",
+    "orchestra/testbench": "^8.0",
+    "orchestra/testbench-dusk": "^8.0",
+    "phpstan/phpstan-deprecation-rules": "^1.0",
+    "phpstan/phpstan-phpunit": "^1.2",
+    "phpunit/phpunit": "^10.0",
+    "pusher/pusher-php-server": "^7.2",
+    "squizlabs/php_codesniffer": "^3.8"
   },
   "autoload": {
     "psr-4": {
